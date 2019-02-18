@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace RestaurantApi.Controllers
 {
+    //obselete
     public class ValuesController : ApiController
     {
         // GET api/values
