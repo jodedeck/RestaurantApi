@@ -21,7 +21,7 @@ namespace RestaurantApi
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer<RestaurantContext>(new RestaurantsInitializer());
+           
         }
     }
 }
