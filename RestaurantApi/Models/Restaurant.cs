@@ -12,5 +12,8 @@ namespace RestaurantApi.Models
         public string Address { get; set; }
         public string Description { get; set; }
         public int PhoneNumber { get; set; }
+        public string CookingType { get; set; }
+
+
     }
 }

@@ -8,6 +8,10 @@ namespace RestaurantApi.Models
 {
     public class RestaurantContext : DbContext
     {
+        public RestaurantContext() : base()
+        {
+            this.Database.CommandTimeout = 180;
+        }
         public DbSet<Restaurant> Restaurants { get; set; }
     }
 }
