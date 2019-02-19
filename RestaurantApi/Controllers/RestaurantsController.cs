@@ -26,8 +26,38 @@ namespace RestaurantApi.Controllers
             return db.Restaurants;
         }
 
-        // GET: api/Restaurants/5
-        
+        // GET: api/Restaurants/{name}   
+        [ResponseType(typeof(Restaurant))]
+        [Route("api/Restaurants/GetRestaurant/{name}")]
+        public IHttpActionResult GetRestaurant(string name)
+        {
+            List<Restaurant> restaurants = db.Restaurants.Where(r => r.Name == name).ToList();
+            if (restaurants == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurants);
+        }
+
+        // GET: api/Restaurants/{CookingType}   
+        [ResponseType(typeof(Restaurant))]
+        [Route("api/Restaurants/GetRestaurantByCookingType/{cookingType}")]
+        public IHttpActionResult GetRestaurantByCookingType(string cookingType)
+        {
+            List<Restaurant> restaurants = db.Restaurants.Where(r => r.CookingType == cookingType).ToList();
+            if (restaurants == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurants);
+        }
+
+
+
+
+        // GET: api/Restaurants/5    
         [ResponseType(typeof(Restaurant))]
         public IHttpActionResult GetRestaurant(int id)
         {
@@ -119,8 +149,6 @@ namespace RestaurantApi.Controllers
         {
             return db.Restaurants.Count(e => e.Id == id) > 0;
         }
-
-
 
     }
 }
