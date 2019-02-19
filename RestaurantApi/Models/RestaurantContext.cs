@@ -13,5 +13,6 @@ namespace RestaurantApi.Models
             this.Database.CommandTimeout = 180;
         }
         public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }
