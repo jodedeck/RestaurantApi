@@ -15,6 +15,7 @@ namespace RestaurantApi.Models
         public int PhoneNumber { get; set; }
         public string CookingType { get; set; }  
         public string Schedule { get; set; }
+        public int AverageRating { get; set; }
 
     }
 }

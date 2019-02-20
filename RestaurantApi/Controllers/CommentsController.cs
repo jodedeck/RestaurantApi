@@ -100,6 +100,9 @@ namespace RestaurantApi.Controllers
             db.Comments.Add(comment);
             db.SaveChanges();
 
+            
+
+
             return CreatedAtRoute("DefaultApi", new { id = comment.Id }, comment);
         }
 

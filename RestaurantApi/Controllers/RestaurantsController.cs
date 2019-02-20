@@ -40,6 +40,66 @@ namespace RestaurantApi.Controllers
             return Ok(restaurants);
         }
 
+        [ResponseType(typeof(Restaurant))]
+        [Route("api/Restaurants/GetRestaurantByText/{text}")]
+        public IHttpActionResult GetRestaurantByText(string text)
+        {
+            List<Restaurant> restaurants = db.Restaurants.OrderByDescending(x => x.AverageRating)
+                                             .Distinct()
+                                             .Where(r => r.Description.Contains(text) || r.Name.Contains(text)).ToList();
+
+            if (restaurants == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurants);
+        }
+
+
+
+
+
+        [ResponseType(typeof(Restaurant))]
+        [Route("api/Restaurants/AverageRating/{RestaurantId}")]
+        public IHttpActionResult GetAverageRatingByRestaurantId(int restaurantId)
+        {
+     
+            int commentCount = db.Comments.Where(c => c.RestaurantID == restaurantId).Count();
+            var comments = db.Comments.Where(c => c.RestaurantID == restaurantId).ToList();
+            double sumRating = 0;
+            double averageRating = 0;
+            foreach (var comment in comments)
+            {
+                sumRating += comment.Rating;
+            }
+            averageRating = (int)(Math.Round(sumRating/commentCount));
+
+            if (averageRating == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(averageRating);
+        }
+
+
+        // GET: api/Restaurants/{PageNumber}/{PageSize}   
+        [ResponseType(typeof(Restaurant))]
+        [Route("api/Restaurants/{pageNumber}/{pageSize}")]
+        public IHttpActionResult GetRestaurantByPage(int pageNumber, int pageSize)
+        {
+            List<Restaurant> restaurants = db.Restaurants.OrderByDescending(r => r.AverageRating).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+            if (restaurants == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurants);
+        }
+
+
         // GET: api/Restaurants/{CookingType}   
         [ResponseType(typeof(Restaurant))]
         [Route("api/Restaurants/GetRestaurantByCookingType/{cookingType}")]
