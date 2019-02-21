@@ -48,46 +48,62 @@ namespace RestaurantApi.Migrations
             //context.Comments.Add(comment);
             //context.SaveChanges();
 
-            var foods = new List<Food>
-            {
-                new Food {FoodType = "Starter", Description= "un croissant et une couque au chocolat", Name = "petit dej", Price = 5, RestaurantId = 1 },
-                new Food {FoodType = "Dish", Description= "fritte, boisson et un giant", Name = "Menu Giant", Price = 8, RestaurantId = 1 },
-                new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 4, RestaurantId = 1 },
+            //var foods = new List<Food>
+            //{
+            //    new Food {FoodType = "Starter", Description= "un croissant et une couque au chocolat", Name = "petit dej", Price = 5, RestaurantId = 1 },
+            //    new Food {FoodType = "Dish", Description= "fritte, boisson et un giant", Name = "Menu Giant", Price = 8, RestaurantId = 1 },
+            //    new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 4, RestaurantId = 1 },
 
-                new Food {FoodType = "Starter", Description= "un croissant et deux couque au chocolat", Name = "petit dej", Price = 5, RestaurantId = 2 },
-                new Food {FoodType = "Dish", Description= "fritte, boisson et un giant", Name = "Menu BigMac", Price = 8, RestaurantId = 2 },
-                new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 4, RestaurantId = 2 },
+            //    new Food {FoodType = "Starter", Description= "un croissant et deux couque au chocolat", Name = "petit dej", Price = 5, RestaurantId = 2 },
+            //    new Food {FoodType = "Dish", Description= "fritte, boisson et un giant", Name = "Menu BigMac", Price = 8, RestaurantId = 2 },
+            //    new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 4, RestaurantId = 2 },
 
-                new Food {FoodType = "Starter", Description= "soupe miso avec vermicelle", Name = "soupe du jour", Price = 6, RestaurantId = 6 },
-                new Food {FoodType = "Dish", Description= "porc pané accompagné de riz", Name = "Katsudon", Price = 11, RestaurantId = 6 },
-                new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 11, RestaurantId = 6 },
+            //    new Food {FoodType = "Starter", Description= "soupe miso avec vermicelle", Name = "soupe du jour", Price = 6, RestaurantId = 6 },
+            //    new Food {FoodType = "Dish", Description= "porc pané accompagné de riz", Name = "Katsudon", Price = 11, RestaurantId = 6 },
+            //    new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 11, RestaurantId = 6 },
 
-                new Food {FoodType = "Starter", Description= "soupe miso avec vermicelle", Name = "soupe du jour", Price = 6, RestaurantId = 12 },
-                new Food {FoodType = "Dish", Description= "porc pané accompagné de riz", Name = "Katsudon", Price = 11, RestaurantId = 12 },
-                new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 8, RestaurantId = 12 },
+            //    new Food {FoodType = "Starter", Description= "soupe miso avec vermicelle", Name = "soupe du jour", Price = 6, RestaurantId = 12 },
+            //    new Food {FoodType = "Dish", Description= "porc pané accompagné de riz", Name = "Katsudon", Price = 11, RestaurantId = 12 },
+            //    new Food {FoodType = "Dessert", Description= "une boule vanille, chocolat et un coulis de chocolat", Name = "Dame-Blanche", Price = 8, RestaurantId = 12 },
 
-                new Food {FoodType = "Starter", Description= "Salade romaine avec des oeufs et des tomates", Name = "Salade du chef", Price = 9, RestaurantId = 5 },
-                new Food {FoodType = "Dish", Description= "Pizza simple, tomate et mozarella", Name = "Marguerita", Price = 15, RestaurantId = 5 },
-                new Food {FoodType = "Dessert", Description= "tiramisu avec des speculoses", Name = "Tiramisu du chef", Price = 4, RestaurantId = 5 },
+            //    new Food {FoodType = "Starter", Description= "Salade romaine avec des oeufs et des tomates", Name = "Salade du chef", Price = 9, RestaurantId = 5 },
+            //    new Food {FoodType = "Dish", Description= "Pizza simple, tomate et mozarella", Name = "Marguerita", Price = 15, RestaurantId = 5 },
+            //    new Food {FoodType = "Dessert", Description= "tiramisu avec des speculoses", Name = "Tiramisu du chef", Price = 4, RestaurantId = 5 },
 
-                new Food {FoodType = "Starter", Description= "Salade romaine avec des oeufs et des tomates", Name = "Salade du chef", Price = 9, RestaurantId = 11},
-                new Food {FoodType = "Dish", Description= "Pizza simple, tomate et mozarella", Name = "Marguerita", Price = 15, RestaurantId = 11 },
-                new Food {FoodType = "Dessert", Description= "tiramisu avec des speculoses", Name = "Tiramisu du chef", Price = 4, RestaurantId = 11 },
+            //    new Food {FoodType = "Starter", Description= "Salade romaine avec des oeufs et des tomates", Name = "Salade du chef", Price = 9, RestaurantId = 11},
+            //    new Food {FoodType = "Dish", Description= "Pizza simple, tomate et mozarella", Name = "Marguerita", Price = 15, RestaurantId = 11 },
+            //    new Food {FoodType = "Dessert", Description= "tiramisu avec des speculoses", Name = "Tiramisu du chef", Price = 4, RestaurantId = 11 },
 
-                new Food {FoodType = "Starter", Description= "salade variée", Name = "Veggan Box", Price = 114, RestaurantId = 4},
-                new Food {FoodType = "Dish", Description= "club sandwitch produits bio", Name = "Tartines bio", Price = 15, RestaurantId = 4 },
-                new Food {FoodType = "Dessert", Description= "tarte aux cerises", Name = "tarte de chez françoise", Price = 4, RestaurantId = 4 },
+            //    new Food {FoodType = "Starter", Description= "salade variée", Name = "Veggan Box", Price = 114, RestaurantId = 4},
+            //    new Food {FoodType = "Dish", Description= "club sandwitch produits bio", Name = "Tartines bio", Price = 15, RestaurantId = 4 },
+            //    new Food {FoodType = "Dessert", Description= "tarte aux cerises", Name = "tarte de chez françoise", Price = 4, RestaurantId = 4 },
 
-                new Food {FoodType = "Starter", Description= "salade variée", Name = "Veggan Box", Price = 15, RestaurantId = 10},
-                new Food {FoodType = "Dish", Description= "club sandwitch produits bio", Name = "Tartines bio", Price = 12, RestaurantId = 10 },
-                new Food {FoodType = "Dessert", Description= "tarte aux cerises", Name = "tarte de chez françoise", Price = 14, RestaurantId = 10 },
-            };
+            //    new Food {FoodType = "Starter", Description= "salade variée", Name = "Veggan Box", Price = 15, RestaurantId = 10},
+            //    new Food {FoodType = "Dish", Description= "club sandwitch produits bio", Name = "Tartines bio", Price = 12, RestaurantId = 10 },
+            //    new Food {FoodType = "Dessert", Description= "tarte aux cerises", Name = "tarte de chez françoise", Price = 14, RestaurantId = 10 },
+            ////};
 
-            foods.ForEach(f => context.Foods.Add(f));
-            context.SaveChanges();
-           
+            //foods.ForEach(f => context.Foods.Add(f));
+            //context.SaveChanges();
 
+            //var users = new List<User> {
 
+            //    new User {FirstName = "Jonathan", Email = "jodedeck542@gmail.com", LastName = "de Decker", Password="Lapinous", UserName="jdd", UserRole = Role.user},
+            //    new User {FirstName = "Hamza", LastName = "Kasmi", UserName = "hkasmi", Email = "kasmihamza3@gmail.com", Password ="Master", UserRole=Role.owner },
+            //    new User {FirstName = "Aurélien", LastName ="Gosse", UserName="admin", Email = "aurelia@email.email", Password = "admin", UserRole = Role.admin}
+            //};
+
+            //users.ForEach(u => context.Users.Add(u));
+
+            //var favorites = new List<Favorite>
+            //{
+            //    new Favorite {RestaurantId = 1, UserId = 1},
+            //    new Favorite {RestaurantId = 2, UserId = 1},
+            //    new Favorite {RestaurantId = 4, UserId = 3}
+
+            //};
+
+            //favorites.ForEach(f => context.Favorites.Add(f));
         
         }
     }

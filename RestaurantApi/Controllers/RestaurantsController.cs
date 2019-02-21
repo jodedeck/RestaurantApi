@@ -21,17 +21,23 @@ namespace RestaurantApi.Controllers
 
         
         // GET: api/Restaurants
-        public IQueryable<Restaurant> GetRestaurants()
+        [Route("Api/Restaurants/{pageNumber}-{pageSize}")]
+        public IQueryable<Restaurant> GetRestaurantsByPage(int pageNumber, int pageSize)
         {
-            return db.Restaurants;
+            return db.Restaurants.OrderBy(r => r.AverageRating).Skip((pageNumber - 1) * pageSize);
         }
 
         // GET: api/Restaurants/{name}   
         [ResponseType(typeof(Restaurant))]
-        [Route("api/Restaurants/GetRestaurant/{name}")]
-        public IHttpActionResult GetRestaurant(string name)
+        [Route("api/Restaurants/GetRestaurant/{name}/{pageNumber}-{pageSize}")]
+        public IHttpActionResult GetRestaurantByNameByPage(string name, int pageNumber, int pageSize)
         {
-            List<Restaurant> restaurants = db.Restaurants.Where(r => r.Name == name).ToList();
+            List<Restaurant> restaurants = db.Restaurants
+                                             .Where(r => r.Name == name)
+                                             .OrderBy(r => r.AverageRating)
+                                             .Skip((pageNumber - 1) * pageSize)
+                                             .ToList();
+
             if (restaurants == null)
             {
                 return NotFound();
@@ -39,6 +45,7 @@ namespace RestaurantApi.Controllers
 
             return Ok(restaurants);
         }
+
 
         [ResponseType(typeof(Restaurant))]
         [Route("api/Restaurants/GetRestaurantByText/{text}")]
@@ -46,7 +53,7 @@ namespace RestaurantApi.Controllers
         {
             List<Restaurant> restaurants = db.Restaurants.OrderByDescending(x => x.AverageRating)
                                              .Distinct()
-                                             .Where(r => r.Description.Contains(text) || r.Name.Contains(text)).ToList();
+                                             .Where(r => r.Description.Contains(text) || r.Name.Contains(text) || r.CookingType.Contains(text) || r.Address.Contains(text)).ToList();
 
             if (restaurants == null)
             {
@@ -55,9 +62,6 @@ namespace RestaurantApi.Controllers
 
             return Ok(restaurants);
         }
-
-
-
 
 
         [ResponseType(typeof(Restaurant))]
@@ -99,13 +103,17 @@ namespace RestaurantApi.Controllers
             return Ok(restaurants);
         }
 
-
-        // GET: api/Restaurants/{CookingType}   
         [ResponseType(typeof(Restaurant))]
-        [Route("api/Restaurants/GetRestaurantByCookingType/{cookingType}")]
-        public IHttpActionResult GetRestaurantByCookingType(string cookingType)
+        [Route("api/Restaurants/GetRestaurants/{text}/{pageNumber}-{pageSize}")]
+        public IHttpActionResult GetRestaurantByTextByPage(string text, int pageNumber, int pageSize)
         {
-            List<Restaurant> restaurants = db.Restaurants.Where(r => r.CookingType == cookingType).ToList();
+            List<Restaurant> restaurants = db.Restaurants.OrderByDescending(x => x.AverageRating)
+                                             .Distinct()
+                                             .Where(r => r.Description.Contains(text) || r.Name.Contains(text) || r.CookingType.Contains(text) || r.Address.Contains(text))
+                                             .OrderBy(r => r.AverageRating)
+                                             .Skip((pageNumber - 1) * pageSize)
+                                             .Take(pageSize).ToList();
+
             if (restaurants == null)
             {
                 return NotFound();
@@ -114,6 +122,41 @@ namespace RestaurantApi.Controllers
             return Ok(restaurants);
         }
 
+        // GET: api/Restaurants/{CookingType}   
+        [ResponseType(typeof(Restaurant))]
+        [Route("api/Restaurants/GetRestaurantByCookingType/{cookingType}")]
+        public IHttpActionResult GetRestaurantByCookingType(string cookingType)
+        {
+            List<Restaurant> restaurants = db.Restaurants.Where(r => r.CookingType == cookingType).ToList();
+
+            if (restaurants == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurants);
+        }
+
+
+        // GET: api/Restaurants/{CookingType}   
+        [ResponseType(typeof(Restaurant))]
+        [Route("api/Restaurants/GetRestaurantByCookingType/{cookingType}/{pageNumber}-{pageSize}")]
+        public IHttpActionResult GetRestaurantByCookingTypeByPage(string cookingType, int pageNumber, int pageSize)
+        {
+            List<Restaurant> restaurants = db.Restaurants
+                                             .Where(r => r.CookingType == cookingType)
+                                             .OrderBy(r => r.AverageRating)
+                                             .Skip((pageNumber - 1) * pageSize)
+                                             .ToList();
+
+
+            if (restaurants == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurants);
+        }
 
 
 
