@@ -34,7 +34,8 @@ namespace RestaurantApi.Controllers
                 return NotFound();
             }
 
-            return Ok(user);
+            var userfav = new UserFavoriteModel(user);
+            return Ok(userfav);
         }
 
 
@@ -90,7 +91,8 @@ namespace RestaurantApi.Controllers
 
             var validUser = users.Exists(r => r.UserName == userName && validpw);
             var user = db.Users.Where(u => u.UserName == userName).FirstOrDefault();
-            if (validUser) return Ok(user);
+            var userfav = new UserFavoriteModel(user);
+            if (validUser) return Ok(userfav);
             else return BadRequest();
 
         }
