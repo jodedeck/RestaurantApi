@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using RestaurantApi.Models;
 
 namespace RestaurantApi.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
         private RestaurantContext db = new RestaurantContext();
@@ -33,6 +35,25 @@ namespace RestaurantApi.Controllers
             }
 
             return Ok(user);
+        }
+
+
+        // GET: 
+        [ResponseType(typeof(User))]
+        [Route("api/UserId/{userName}")]
+        public IHttpActionResult GetUserIdByUserName(string userName)
+        {
+
+            var user = db.Users.Where(u => u.UserName == userName).FirstOrDefault();
+            int userId = user.Id;
+
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(userId);
         }
 
 
@@ -68,7 +89,8 @@ namespace RestaurantApi.Controllers
 
 
             var validUser = users.Exists(r => r.UserName == userName && validpw);
-            if (validUser) return Ok(validUser);
+            var user = db.Users.Where(u => u.UserName == userName).FirstOrDefault();
+            if (validUser) return Ok(user);
             else return BadRequest();
 
         }

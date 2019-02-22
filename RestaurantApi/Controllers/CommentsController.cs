@@ -97,11 +97,11 @@ namespace RestaurantApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            var commentDate = DateTime.Now;
+            comment.CommentDate = commentDate;
+
             db.Comments.Add(comment);
             db.SaveChanges();
-
-            
-
 
             return CreatedAtRoute("DefaultApi", new { id = comment.Id }, comment);
         }

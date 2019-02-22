@@ -13,5 +13,7 @@ namespace RestaurantApi.Models
         public int RestaurantID { get; set; }
         public string Content { get; set; }      
         public int Rating { get; set; }
+        public DateTime CommentDate { get; set; }
+        public string UserName { get; set; }
     }
 }

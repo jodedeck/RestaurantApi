@@ -14,7 +14,7 @@ namespace RestaurantApi.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(RestaurantApi.Models.RestaurantContext context)
+        protected override void Seed(RestaurantContext context)
         {
             //var restaurants = new List<Restaurant>
             //    {

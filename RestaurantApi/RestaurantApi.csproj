@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201902211347027_v12.Designer.cs">
       <DependentUpon>201902211347027_v12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902220905282_v13.cs" />
+    <Compile Include="Migrations\201902220905282_v13.Designer.cs">
+      <DependentUpon>201902220905282_v13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CryptingFactory.cs" />
@@ -375,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902211347027_v12.resx">
       <DependentUpon>201902211347027_v12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902220905282_v13.resx">
+      <DependentUpon>201902220905282_v13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
